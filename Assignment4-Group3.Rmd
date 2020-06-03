@@ -1,0 +1,26 @@
+---
+title: "Assignment4-Group3"
+author: "Group3"
+date: "03/06/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Diyao Chen: 
+1. Which genre are highest rated?
+2. Which genre support most languages?
+3. Which genre support most devices?
+
+# Sen Wang: 
+1. Genre-rating-price correlation?
+2. Genre-rating-size correlation?
+
+# Yezi He:
+1. Most number of rating counts for which apps/genre? (i.e., number of people who rated)
+2. Rise/drop in rating since last update?
+
+# Ketan Kabu:
+1. Development-Rating correlation?
