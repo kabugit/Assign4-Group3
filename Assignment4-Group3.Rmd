@@ -9,12 +9,21 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+```{r library}
+library(tidyverse)
+```
+
+
 # Diyao Chen: 
 1. Which genre are highest rated?
 2. Which genre support most languages?
 3. Which genre support most devices?
 
 # Sen Wang: 
+
+```{r}
+data <- read_csv(here::here("data", "AppleStore.csv"))
+```
 
 
 1. Genre-rating-price correlation?
