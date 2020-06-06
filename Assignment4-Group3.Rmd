@@ -23,6 +23,13 @@ knitr::opts_chunk$set(echo = TRUE)
 2. Rise/drop in rating since last update?
 
 # Ketan Kabu:
-1. Development-Rating correlation?
 
+Correlation of version development and rating
+
+
+```{r}
+# Reading the data
+data <- read.csv(here::here("data", "AppleStore.csv"))
+
+```
 
