@@ -36,3 +36,9 @@ library(kableExtra)
 library(ggplot2)
 ```
 
+# Introduction
+In this section, we will analysis the realtionship between different type of app with user rating, language and support different devices.
+
+```{r Read data source 1, fig.cap=" ", echo = FALSE, message = FALSE, warning=FALSE}
+dat <- read_csv("C:/Users/61452/Desktop/Assign4-Group3/data/AppleStore.csv")
+```
