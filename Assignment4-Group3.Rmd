@@ -24,3 +24,15 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Ketan Kabu:
 1. Development-Rating correlation?
+
+
+
+```{r loading libraries, echo = FALSE, message = FALSE, warning = FALSE}
+# Libraries
+
+library(tidyverse)
+library(readr)
+library(kableExtra)
+library(ggplot2)
+```
+
