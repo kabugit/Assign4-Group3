@@ -35,6 +35,7 @@ library(kableExtra)
 library(ggplot2)
 ```
 
+# Diyao Chen: 
 # Introduction
 Nowadays, more and more different type of App on the market. Some is for work, some is for entertainment,we know to know the feekback from the consumers.
 In this section, we will analysis the realtionship between different type of app with user rating, language and support different devices.
