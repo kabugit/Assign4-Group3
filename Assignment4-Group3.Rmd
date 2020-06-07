@@ -9,14 +9,65 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+```{r library}
+library(tidyverse)
+```
+
+
 # Diyao Chen: 
 1. Which genre are highest rated?
 2. Which genre support most languages?
 3. Which genre support most devices?
 
 # Sen Wang: 
+
+```{r}
+data <- read_csv(here::here("data", "AppleStore.csv"))
+```
+
+```{r tidy-data}
+data2 <- data %>%
+  filter(rating_count_tot > 100) %>%
+  mutate(size_mb = size_bytes/1024/1024)
+```
+
 1. Genre-rating-price correlation?
+
+```{r data_plot1, fig.cap="No strong relation between app categories and user ratings in different price", message=FALSE, warning=FALSE, fig.width=12, fig.height=12}
+# A histogram showing the relation between app categories and user ratings in different price.
+data2 %>%
+  ggplot(aes(x = prime_genre,
+             y = user_rating,
+             fill = prime_genre)) +
+  geom_histogram(stat = 'summary',
+                 fun.y = mean,
+                 show.legend = FALSE) +
+  coord_flip() +
+  labs (x = "Categories", 
+        y = "Average of user rating",
+        title = "No strong relation between app categories and user ratings in different price") +
+  facet_wrap(~price) +
+  theme_minimal()
+```
+
+According to the Figure \@ref(fig:data_plot1), there is no strong relationship between app categories and user ratings in different price. Each type of App has similar user ratings at different prices. However, we can find that the price of shopping and financial apps is lower than that of other apps, which may be because they hope to gain more users through low threshold, and medical apps are the most expensive, which may be because they provide valuable information about users' health.
+
 2. Genre-rating-size correlation?
+
+```{r data_plot2, fig.cap="The relation between app size and user rating in different genres", message=FALSE, warning=FALSE, fig.width=12, fig.height=12}
+# The relation between app size and user_rating in different app categories.
+data2 %>%
+  ggplot(aes(x = user_rating,
+             y = size_mb)) +
+  geom_line(stat = 'summary',
+            fun.y = mean) +
+  labs (x = "Average of user rating",
+        y = "Size (MB)",
+        title="The relation between app size and user rating in different genres") +
+  facet_wrap(~prime_genre)
+```
+
+According to the Figure \@ref(fig:data_plot2), for most kinds of apps, with the increase of application size, the average user evaluation increases with the increase of praise. Developers can gain higher user ratings by increasing the size of their apps.
 
 # Yezi He:
 1. Most number of rating counts for which apps/genre? (i.e., number of people who rated)
