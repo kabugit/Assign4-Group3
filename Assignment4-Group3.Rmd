@@ -25,6 +25,11 @@ library(tidyverse)
 data <- read_csv(here::here("data", "AppleStore.csv"))
 ```
 
+```{r tidy-data}
+data2 <- data %>%
+  filter(rating_count_tot > 100) %>%
+  mutate(size_mb = size_bytes/1024/1024)
+```
 
 1. Genre-rating-price correlation?
 2. Genre-rating-size correlation?
