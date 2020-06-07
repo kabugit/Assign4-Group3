@@ -32,6 +32,24 @@ data2 <- data %>%
 ```
 
 1. Genre-rating-price correlation?
+
+```{r data_plot1, fig.cap="No strong relation between app categories and user ratings in different price", message=FALSE, warning=FALSE, fig.width=12, fig.height=12}
+# A histogram showing the relation between app categories and user ratings in different price.
+data2 %>%
+  ggplot(aes(x = prime_genre,
+             y = user_rating,
+             fill = prime_genre)) +
+  geom_histogram(stat = 'summary',
+                 fun.y = mean,
+                 show.legend = FALSE) +
+  coord_flip() +
+  labs (x = "Categories", 
+        y = "Average of user rating",
+        title = "No strong relation between app categories and user ratings in different price") +
+  facet_wrap(~price) +
+  theme_minimal()
+```
+
 2. Genre-rating-size correlation?
 
 # Yezi He:
