@@ -11,6 +11,18 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Diyao Chen: 
 1. Which genre are highest rated?
+
+```{r}
+dat2 <- dat %>%
+  group_by(prime_genre) %>%
+  summarise(average = mean(user_rating)) 
+
+ggplot(dat2,
+       aes(x = average,
+           y = prime_genre)) +
+  geom_col()
+```
+
 2. Which genre support most languages?
 3. Which genre support most devices?
 
@@ -18,9 +30,44 @@ knitr::opts_chunk$set(echo = TRUE)
 1. Genre-rating-price correlation?
 2. Genre-rating-size correlation?
 
-# Yezi He:
+# Yezi He
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+
+dat <- read_csv(here::here("data/AppleStore.csv"))
+```
+
+
 1. Most number of rating counts for which apps/genre? (i.e., number of people who rated)
+
+```{r}
+num_rating_count <- dat %>%
+  group_by(prime_genre) %>%
+  summarise(count = sum(rating_count_tot))
+
+ggplot(num_rating_count,
+       aes(x = log(count),
+           y = prime_genre)) +
+  geom_col()
+```
+
+
+
 2. Rise/drop in rating since last update?
+
+```{r}
+rating_difference <- dat %>%
+  mutate(rating_difference = user_rating_ver - user_rating) %>%
+  group_by(prime_genre) %>%
+  summarise(difference = mean(rating_difference))
+
+ggplot(rating_difference,
+       aes(x = difference,
+           y = prime_genre)) +
+  geom_col()
+```
+
+
 
 # Ketan Kabu:
 1. Development-Rating correlation?
