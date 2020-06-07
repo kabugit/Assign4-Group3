@@ -40,7 +40,7 @@ Nowadays, more and more different type of App on the market. Some is for work, s
 In this section, we will analysis the realtionship between different type of app with user rating, language and support different devices.
 
 ```{r Read data source 1, fig.cap=" ", echo = FALSE, message = FALSE, warning=FALSE}
-dat <- read_csv("C:/Users/61452/Desktop/Assign4-Group3/data/AppleStore.csv")
+dat <- read_csvdat <- read_csv(here::here("data/AppleStore.csv"))
 ```
 
 # Question1. Which genre are highest rated?
@@ -113,3 +113,4 @@ Graph3<- gener_devices%>%
   theme(axis.text.x=element_text(angle = 90, hjust = 1))
 print(Graph3)
 ```
+As we can see from table3 and figure3,the top on support devices is Games.It support 38 different types of devices and the lowest is Music,which support 35 different types of devices.Each type of app is at least 35 different devices.The gap between the top and lowest is very close.
