@@ -29,7 +29,6 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r loading libraries, echo = FALSE, message = FALSE, warning = FALSE}
 # Libraries
-
 library(tidyverse)
 library(readr)
 library(kableExtra)
@@ -59,13 +58,13 @@ genre_rating <- dat%>%
   
 
 Graph1<- genre_rating%>%
-  ggplot(aes(x =reorder(prime_genre,-average_rating), y = average_rating))+
+  ggplot(aes(x =reorder(prime_genre,-average_rating), y = average_rating,fill = prime_genre))+
   geom_bar(stat = "identity")+
   ggtitle("Figure1.The ranking rate with different genre Apps")+
   theme(axis.text.x=element_text(angle = 90, hjust = 1))
 print(Graph1)
 ```
-As we can see from the table1 and the figure1, there are 23 different types of App in the research.
+As we can see from the table1 and the figure1, there are 23 different types of App in the research. The highest rating is type of productivity, which is 4 mark.On the other hand, the lowest rating is catalogs, which is 2.1 mark. overall, the different type of App's ratings are fairly close. The gap of highest and lowest is 1.9.and the top and the second within a tenth of a point.
 
 
 # Question2. Which genre support most language?
@@ -73,7 +72,8 @@ As we can see from the table1 and the figure1, there are 23 different types of A
 gener_language <- dat%>%
   group_by(prime_genre)%>%
   summarise(average_language = mean(lang.num))%>%
-  arrange(-average_language)
+  arrange(-average_language)%>%
+  unique()
 
 
  knitr::kable(gener_language,booktabs = TRUE,
@@ -83,7 +83,7 @@ gener_language <- dat%>%
   
 
 Graph2<- gener_language%>%
-  ggplot(aes(x =reorder(prime_genre,-average_language), y = average_language))+
+  ggplot(aes(x =reorder(prime_genre,-average_language), y = average_language, fill = prime_genre))+
   geom_bar(stat = "identity")+
   ggtitle("Figure2.The ranking language with different genre Apps")+
   theme(axis.text.x=element_text(angle = 90, hjust = 1))
@@ -96,17 +96,18 @@ print(Graph2)
 gener_devices <- dat%>%
   group_by(prime_genre)%>%
   summarise(average_devices = mean(sup_devices.num))%>%
-  arrange(-average_devices)
+  arrange(-average_devices)%>%
+  unique()
 
 
  knitr::kable(gener_devices,booktabs = TRUE,
-  caption = "Table3.Ranking of devices with different genre") %>%
+  caption = "Table3.Ranking of support devices with different genre") %>%
   kable_styling(bootstrap_options = c("striped", "hover"))%>%
   kable_styling(latex_options = "hold_position") 
   
 
 Graph3<- gener_devices%>%
-  ggplot(aes(x =reorder(prime_genre,-average_devices), y = average_devices))+
+  ggplot(aes(x =reorder(prime_genre,-average_devices), y = average_devices, fill = prime_genre))+
   geom_bar(stat = "identity")+
   ggtitle("Figure3.The ranking devices with different genre Apps")+
   theme(axis.text.x=element_text(angle = 90, hjust = 1))
