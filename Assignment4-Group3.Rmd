@@ -50,6 +50,8 @@ data2 %>%
   theme_minimal()
 ```
 
+According to the Figure \@ref(fig:data_plot1), there is no strong relationship between app categories and user ratings in different price. Each type of App has similar user ratings at different prices. However, we can find that the price of shopping and financial apps is lower than that of other apps, which may be because they hope to gain more users through low threshold, and medical apps are the most expensive, which may be because they provide valuable information about users' health.
+
 2. Genre-rating-size correlation?
 
 # Yezi He:
