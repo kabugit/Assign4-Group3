@@ -67,6 +67,8 @@ data2 %>%
   facet_wrap(~prime_genre)
 ```
 
+According to the Figure \@ref(fig:data_plot2), for most kinds of apps, with the increase of application size, the average user evaluation increases with the increase of praise. Developers can gain higher user ratings by increasing the size of their apps.
+
 # Yezi He:
 1. Most number of rating counts for which apps/genre? (i.e., number of people who rated)
 2. Rise/drop in rating since last update?
