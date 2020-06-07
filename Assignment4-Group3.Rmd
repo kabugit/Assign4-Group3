@@ -54,6 +54,19 @@ According to the Figure \@ref(fig:data_plot1), there is no strong relationship b
 
 2. Genre-rating-size correlation?
 
+```{r data_plot2, fig.cap="The relation between app size and user rating in different genres", message=FALSE, warning=FALSE, fig.width=12, fig.height=12}
+# The relation between app size and user_rating in different app categories.
+data2 %>%
+  ggplot(aes(x = user_rating,
+             y = size_mb)) +
+  geom_line(stat = 'summary',
+            fun.y = mean) +
+  labs (x = "Average of user rating",
+        y = "Size (MB)",
+        title="The relation between app size and user rating in different genres") +
+  facet_wrap(~prime_genre)
+```
+
 # Yezi He:
 1. Most number of rating counts for which apps/genre? (i.e., number of people who rated)
 2. Rise/drop in rating since last update?
