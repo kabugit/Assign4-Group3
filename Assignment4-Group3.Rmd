@@ -24,3 +24,94 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Ketan Kabu:
 1. Development-Rating correlation?
+
+
+
+```{r loading libraries, echo = FALSE, message = FALSE, warning = FALSE}
+# Libraries
+library(tidyverse)
+library(readr)
+library(kableExtra)
+library(ggplot2)
+```
+
+# Diyao Chen: 
+# Introduction
+Nowadays, more and more different type of App on the market. Some is for work, some is for entertainment,we know to know the feekback from the consumers.
+In this section, we will analysis the realtionship between different type of app with user rating, language and support different devices.
+
+```{r Read data source 1, fig.cap=" ", echo = FALSE, message = FALSE, warning=FALSE}
+dat <- read_csvdat <- read_csv(here::here("data/AppleStore.csv"))
+```
+
+# Question1. Which genre are highest rated?
+```{r q1, fig.cap="research for gener with rating ", echo = FALSE, message = FALSE, warning=FALSE}
+genre_rating <- dat%>%
+  group_by(prime_genre)%>%
+  summarise(average_rating = mean(user_rating))%>%
+  arrange(-average_rating)%>%
+  unique()
+
+ knitr::kable(genre_rating,booktabs = TRUE,
+  caption = "Table1.Ranking of rating with different genre") %>%
+  kable_styling(bootstrap_options = c("striped", "hover"))%>%
+  kable_styling(latex_options = "hold_position") 
+  
+
+Graph1<- genre_rating%>%
+  ggplot(aes(x =reorder(prime_genre,-average_rating), y = average_rating,fill = prime_genre))+
+  geom_bar(stat = "identity")+
+  ggtitle("Figure1.The ranking rate with different genre Apps")+
+  theme(axis.text.x=element_text(angle = 90, hjust = 1))
+print(Graph1)
+```
+As we can see from the table1 and the figure1, there are 23 different types of App in the research. The highest rating is type of productivity, which is 4 mark.On the other hand, the lowest rating is catalogs, which is 2.1 mark. overall, the different type of App's ratings are fairly close. The gap of highest and lowest is 1.9.and the top and the second within a tenth of a point.
+
+
+# Question2. Which genre support most language?
+```{r q2, fig.cap="research for gener with language", echo = FALSE, message = FALSE, warning=FALSE}
+gener_language <- dat%>%
+  group_by(prime_genre)%>%
+  summarise(average_language = mean(lang.num))%>%
+  arrange(-average_language)%>%
+  unique()
+
+
+ knitr::kable(gener_language,booktabs = TRUE,
+  caption = "Table2.Ranking of language with different genre") %>%
+  kable_styling(bootstrap_options = c("striped", "hover"))%>%
+  kable_styling(latex_options = "hold_position") 
+  
+
+Graph2<- gener_language%>%
+  ggplot(aes(x =reorder(prime_genre,-average_language), y = average_language, fill = prime_genre))+
+  geom_bar(stat = "identity")+
+  ggtitle("Figure2.The ranking language with different genre Apps")+
+  theme(axis.text.x=element_text(angle = 90, hjust = 1))
+print(Graph2)
+```
+As we can see from table2 and figure2, the genre of productivity is support the most language, which is the type of 11 different languages.And the lowest is the Finance app, only support 2 types of language about that. The gap is huge between the top and the lowest, but every type of Apps Will provide at least two different languages.
+
+# Question3. Which genre support most devices?
+```{r q3, fig.cap="research for gener with devices", echo = FALSE, message = FALSE, warning=FALSE}
+gener_devices <- dat%>%
+  group_by(prime_genre)%>%
+  summarise(average_devices = mean(sup_devices.num))%>%
+  arrange(-average_devices)%>%
+  unique()
+
+
+ knitr::kable(gener_devices,booktabs = TRUE,
+  caption = "Table3.Ranking of support devices with different genre") %>%
+  kable_styling(bootstrap_options = c("striped", "hover"))%>%
+  kable_styling(latex_options = "hold_position") 
+  
+
+Graph3<- gener_devices%>%
+  ggplot(aes(x =reorder(prime_genre,-average_devices), y = average_devices, fill = prime_genre))+
+  geom_bar(stat = "identity")+
+  ggtitle("Figure3.The ranking devices with different genre Apps")+
+  theme(axis.text.x=element_text(angle = 90, hjust = 1))
+print(Graph3)
+```
+As we can see from table3 and figure3,the top on support devices is Games.It support 38 different types of devices and the lowest is Music,which support 35 different types of devices.Each type of app is at least 35 different devices.The gap between the top and lowest is very close.
