@@ -91,4 +91,24 @@ print(Graph2)
 ```
 
 
+# Question3. Which genre support most devices?
+```{r q3, fig.cap="research for gener with devices", echo = FALSE, message = FALSE, warning=FALSE}
+gener_devices <- dat%>%
+  group_by(prime_genre)%>%
+  summarise(average_devices = mean(sup_devices.num))%>%
+  arrange(-average_devices)
 
+
+ knitr::kable(gener_devices,booktabs = TRUE,
+  caption = "Table3.Ranking of devices with different genre") %>%
+  kable_styling(bootstrap_options = c("striped", "hover"))%>%
+  kable_styling(latex_options = "hold_position") 
+  
+
+Graph3<- gener_devices%>%
+  ggplot(aes(x =reorder(prime_genre,-average_devices), y = average_devices))+
+  geom_bar(stat = "identity")+
+  ggtitle("Figure3.The ranking devices with different genre Apps")+
+  theme(axis.text.x=element_text(angle = 90, hjust = 1))
+print(Graph3)
+```
