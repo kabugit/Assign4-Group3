@@ -4,6 +4,8 @@ author: "Group3: Yezi He, Diyao Chen, Ketan Kabu, Sen Wang"
 date: "08/06/2020"
 output:
   bookdown::html_document2
+bibliography: references.bib
+link-citations: yes
 ---
 
 
@@ -28,7 +30,7 @@ dat <- read_csv(here::here("data/AppleStore.csv"))
 
 # Introduction
 
-
+@dataset
 
 # Section 1
 
@@ -68,7 +70,7 @@ kable(head(num_rating_count_game,10),
              background = "steelblue")
 ```
 
-It can be seen from Table \@ref(tab:ranknumcount) that the top three apps with the most rating counts are Clash of Clans, Temple Run and Candy Crush Saga. Among them, the number of Clash of Clans and Temple Run rating counts exceeds one million.
+It can be seen from Table \@ref(tab:ranknumcount) that the top three apps with the most rating counts are Clash of Clans, Temple Run and Candy Crush Saga, which were all the rage. Among them, the number of Clash of Clans and Temple Run rating counts exceeds one million.
 
 ## Rise/drop in rating since last update?
 
@@ -106,7 +108,7 @@ kable(rating_difference_rank,
 
 
 
-It can be seen from Figure \@ref(fig:ratingdifference) and Table \@ref(tab:rankratingdifference) that shopping apps have the fastest drop in ratings after last update. Finance and food & drink are followed in the ranking. And only the rating of the shopping apps fell below -0.8.
+After the update, most apps ratings have changed. Unexpectedly, all apps ratings have dropped. It can be seen from Figure \@ref(fig:ratingdifference) and Table \@ref(tab:rankratingdifference) that shopping apps have the fastest drop in ratings after last update. Finance, food & drink and news are followed in the ranking, whose differences are around -0.7. And only the rating of the shopping apps fell below -0.8. Games has a lot of ratings, but after updating, the ratings haven't changed much.
 
 
 # Section 2
