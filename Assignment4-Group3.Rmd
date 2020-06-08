@@ -141,8 +141,10 @@ plot_genre_data <- vers %>%
 
 plot_genre_data$`Average Ratings` <- round(plot_genre_data$`Average Ratings`, 1)
 ```
+
 Please hover pointer over the scatter plot points to view the Genre
-```{r}
+
+```{r devplot, fig.align="center", fig.cap="Development-Rating correlation"}
 # Plotting
 dev_plot <- plot_genre_data %>%
   ggplot(aes(x = `Average Developments`, y = `Average Ratings`, color = Genre)) + 
@@ -150,6 +152,8 @@ dev_plot <- plot_genre_data %>%
 
 ggplotly(dev_plot)
 ```
+Figure \@ref(fig:devplot)
+
 
 The plot above indicates that finance apps (on the far right) have had way more major developments than any other genre of apps, but not a relatively high rating.
 Most of the app genres lie in the range of 1-12 developments, while also hovering around the 4 star rating, which is quite decent.
@@ -170,13 +174,18 @@ plot_genre_filt <- vers %>%
             `Average Ratings` = as.numeric(mean(user_rating, na.rm = TRUE))) %>%    arrange(desc(`Average Developments`)) %>%
   rename("Genre" = prime_genre)
 plot_genre_filt$`Average Ratings` <- round(plot_genre_filt$`Average Ratings`, 1)
+```
 
+
+```{r devplot-filt, fig.align="center", fig.cap="Development-Rating correlation (updated)"}
 dev_plot_filt <- plot_genre_filt %>%
   ggplot(aes(x = `Average Developments`, y = `Average Ratings`, color = Genre)) + 
   geom_point(alpha = 0.7)
 
 ggplotly(dev_plot_filt)
 ```
+Figure \@ref(fig:devplot-filt)
 
 By removing only 2 outlier apps (Stock Martket Pro, Stock Markter HD) from Finance and one (NBA) from Sport, the graph becomes much more appropriately scaled. Finance average developments drop from 100 to 4, whereas Sports drops from 34 to 4.
+So, in figure \@ref(fig:devplot-filt) we see that Entertainment becomes the most developed genre at average 7 major developments, and even in this case, with an average rating of 3.8, the genre is not nearly one of the best rated. Clearly, app developments isn't corresponding to actually high ratings.
 
