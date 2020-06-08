@@ -55,7 +55,8 @@ ggplot(num_rating_count,
        title = "Most number of rating counts for which genre") 
 ```
 
-Figure \@ref(fig:numcount) shows that games are the category with the highest number of rating, much higher than all other categories
+Figure \@ref(fig:numcount) shows that games are the genre with the highest number of rating, far higher than other genres. 
+Behind the games are social networking and photo & video. Apps for entertainment receive the most ratings.
 
 ```{r ranknumcount}
 kable(head(num_rating_count_game,10),
@@ -67,7 +68,7 @@ kable(head(num_rating_count_game,10),
              background = "steelblue")
 ```
 
-It can be seen from Table \@ref(tab:ranknumcount) that the number of people who rated games is far more than the number of people who rated other genres. The top three are games, social networking and photo & video.
+It can be seen from Table \@ref(tab:ranknumcount) that the top three apps with the most rating counts are Clash of Clans, Temple Run and Candy Crush Saga. Among them, the number of Clash of Clans and Temple Run rating counts exceeds one million.
 
 ## Rise/drop in rating since last update?
 
@@ -105,7 +106,7 @@ kable(rating_difference_rank,
 
 
 
-It can be seen from Figure \@ref(fig:ratingdifference) and Table \@ref(tab:rankratingdifference) that shopping apps have the fastest drop in ratings after last update. Finance and food & drink are followed in the ranking.
+It can be seen from Figure \@ref(fig:ratingdifference) and Table \@ref(tab:rankratingdifference) that shopping apps have the fastest drop in ratings after last update. Finance and food & drink are followed in the ranking. And only the rating of the shopping apps fell below -0.8.
 
 
 # Section 2
