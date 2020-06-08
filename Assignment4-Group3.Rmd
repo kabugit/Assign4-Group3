@@ -411,4 +411,23 @@ According to the Figure \@ref(fig:dataplot2), for most kinds of apps, with the i
 
 # Conclusion
 
+We have looked into various aspects of the mobile app landscape. We can safely draw the following conclusions:  
+
+1. Ratings - Productivity has the highest average rating as compared to any other genre at just over 4, making it the only genre with an above 4 average rating. It is followed by Social Networking (3.9) and Photo & Video (3.8). Catalogs are rated the lowest (2.1).
+
+2. Usage (rating count) - Games, Social Networking and Photo & Video apps are the highest used app genres. Clash of Clans, Temple Run and Candy Crush are the highest rated apps, making it clear why Games is the most used app genre.
+
+3. Most languages - Productivity, Business and Photo & Video are the apps with most supported languages on their platform, with Productivity supporting 11 languages. Finance apps are the lowest in this category with 2 supported languages only.
+
+4. Most devices - App genre supported on most devices is Games, supoorted on 38 devices. Books and Catalogs follow, although all genres operate at 35 apps or more.
+
+5. Most developed - Finance and Sport are way ahead of all genres in terms of most major developments occured. Facebook, Google and Instagram are the apps with the most developments till date among the highest used apps.
+
+6. Latest version update - Ratings for nearly all genres have fallen after the latest version update, with Shopping, Finance and Food & Drink getting hit the hardest. Games have maintained a stable rating.
+
+7. Price-rating correlation - There seems to be no evidence of ratings changing with an increase or decrease in the average price of all genres. Although, Finance and Shopping apps are the lowest priced, whereas Medical apps are the highest priced.
+
+
+
+# References
 
