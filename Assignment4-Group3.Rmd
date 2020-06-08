@@ -2,29 +2,27 @@
 title: "Assignment4-Group3"
 author: "Group3"
 date: "03/06/2020"
-output: html_document
+output:
+  bookdown::html_document2
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r echo = FALSE, message = FALSE, warning = FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 ```
-
-# Diyao Chen: 
-1. Which genre are highest rated?
-2. Which genre support most languages?
-3. Which genre support most devices?
-
-# Sen Wang: 
-1. Genre-rating-price correlation?
-2. Genre-rating-size correlation?
-
-# Yezi He:
-1. Most number of rating counts for which apps/genre? (i.e., number of people who rated)
-2. Rise/drop in rating since last update?
 
 # Ketan Kabu:
 
-Correlation of version development and rating
+# Correlation of version development and rating
+
+## What is version code?
+
+Version code is a positive integer used as an internal version number. This number is used only to determine whether one version is more recent than another, with higher numbers indicating more recent versions. The value is a positive integer so that other apps can programmatically evaluate it, for example to check an upgrade or downgrade relationship.@mcmurtry_zampano_2020
+
+```{r}
+library(tidyverse)
+library(dplyr)
+library(kableExtra)
+```
 
 
 ```{r}
@@ -33,3 +31,98 @@ data <- read.csv(here::here("data", "AppleStore.csv"))
 
 ```
 
+
+```{r}
+vers <- data %>% 
+  filter(!rating_count_tot %in% 0:99) %>% 
+  mutate(Main_Ver = as.integer(sub("\\..*", "", ver))) # Removed apps that have total ratings posted less than 100, as this indicates a considerable lack of usage
+
+```
+## Average number of app developments of top 30 apps
+
+Top 30 apps are chosen on the basis of usage, which in this case is assumed to be total rating counts.
+
+
+
+```{r app-tab}
+# Filtering top 30 apps by usage (rating count)
+top_apps <- vers %>% 
+  arrange(desc(rating_count_tot)) %>% 
+  slice(1:30)
+
+# Calculating average major development for top 30 apps  
+top_apps_dev <- top_apps %>% 
+  group_by(track_name) %>%
+  summarise(`Average Major Developments` = as.integer(mean(Main_Ver, na.rm = TRUE))) %>% 
+  arrange(desc(`Average Major Developments`)) %>% 
+  rename("App" = track_name)
+
+# Creating table using kable to display findings
+knitr::kable(top_apps_dev, caption = "Top apps and their developments") %>% 
+  kable_styling(latex_options = c("striped", "hold_position"))
+```
+Table \@ref(tab:app-tab)
+
+
+Facebook is the app that by far has had the most developments out of the top 30 apps, with 95 major developments. This is followed by Google with 27 and Instagram with 10. 
+Interestin to note that Temple Run and Subway Surfers, 2 apps that are widely popular and been around since a long time have only had 1 major development.
+
+
+## Average number of app developments of all genres
+
+Let's take a look at the genres with highest number of major developments
+
+
+```{r genre-tab}
+genre_dev <- vers %>% 
+  group_by(prime_genre) %>% 
+  summarise(`Average Developments` = as.integer(mean(Main_Ver, na.rm = TRUE))) %>%   arrange(desc(`Average Developments`)) %>% 
+  rename("Genre" = prime_genre)
+
+#Creating table using kable to display findings
+knitr::kable(genre_dev, caption = "Genres and their developments") %>% 
+  kable_styling(latex_options = c("striped", "hold_position"))
+```
+Table \@ref(tab:genre-tab)
+
+As we can see, Finance and Sports apps seem to have a massive number of developments with 100 and 34 average major developments respectively. Is it that all Finance and Sports apps have such massive number of developments or are there outliers spiking the average?
+
+## Finance apps with most number of developments
+```{r finance-tab}
+finance_dev <- vers %>%
+  filter(prime_genre == "Finance") %>% 
+  group_by(track_name) %>% 
+  summarise(`Average Developments` = as.integer(mean(Main_Ver, na.rm = TRUE))) %>%   arrange(desc(`Average Developments`)) %>% 
+  rename("Apps" = track_name) 
+finance_dev <- finance_dev %>% 
+  slice(-c(3,4,12,13,20,22,24,25)) # Removing app names that are not readable
+finance_dev <- finance_dev %>% slice(1:20) # Displaying top 20 apps
+  
+#Creating table using kable to display findings
+knitr::kable(finance_dev, caption = "Finance app developments") %>% 
+  kable_styling(latex_options = c("striped", "hold_position"))  
+  
+```
+Table \@ref(tab:finance-tab)
+
+Stock Market HD and Stock Market Pro clearly show a much higher number of major developments, 2023 each. The 3rd highest developed app, Citi Mobile, has had only 8 major developments. 
+
+## Sports apps with most number of developments
+```{r sports-tab}
+sports_dev <- vers %>%
+  filter(prime_genre == "Sports") %>% 
+  group_by(track_name) %>% 
+  summarise(`Average Developments` = as.integer(mean(Main_Ver, na.rm = TRUE))) %>%   arrange(desc(`Average Developments`)) %>% 
+  rename("Apps" = track_name) 
+sports_dev <- sports_dev %>% slice(-c(15,23)) # Removing app names that are not readable
+
+sports_dev <- sports_dev %>% slice(1:20) # Displaying top 20 apps
+  
+#Creating table using kable to display findings
+knitr::kable(sports_dev, caption = "Sports app developments") %>% 
+  kable_styling(latex_options = c("striped", "hold_position"))  
+  
+```
+Table \@ref(tab:sports-tab)
+
+Like finance apps in table \@ref(tab:finance-tab), the app NBA spikes the average developments of the sports genre with 2013 major developments, whereas, the second highest app NFL only has 14 major developments.
