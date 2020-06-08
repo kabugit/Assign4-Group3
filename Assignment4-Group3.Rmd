@@ -135,7 +135,7 @@ Graph1 <- genre_rating %>%
   labs(x = "Genre" , y = "Average Rating")
 Graph1
 ```
-As we can see from the table1 and the figure1, there are 23 different types of App in the research. The highest rating is type of productivity, which is 4 mark.On the other hand, the lowest rating is catalogs, which is 2.1 mark. overall, the different type of App's ratings are fairly close. The gap of highest and lowest is 1.9.and the top and the second within a tenth of a point.
+As we can see from the table1\@ref(tab:q1) and the figure1\@ref(fig:q1), there are 23 different types of App in the research. The highest rating is type of productivity, which is 4 mark.On the other hand, the lowest rating is catalogs, which is 2.1 mark. overall, the different type of App's ratings are fairly close. The gap of highest and lowest is 1.9.and the top and the second within a tenth of a point.
 
 
 ## Which genre support most language?
@@ -162,7 +162,7 @@ Graph2<- gener_language%>%
 Graph2
 ```
 
-As we can see from table2 and figure2, the genre of productivity is support the most language, which is the type of 11 different languages.And the lowest is the Finance app, only support 2 types of language about that. The gap is huge between the top and the lowest, but every type of Apps Will provide at least two different languages.
+As we can see from table2\@ref(tab:q2) and figure2\@ref(fig:q2), the genre of productivity is support the most language, which is the type of 11 different languages.And the lowest is the Finance app, only support 2 types of language about that. The gap is huge between the top and the lowest, but every type of Apps Will provide at least two different languages.
 
 ## Which genre support most devices?
 ```{r q3, fig.cap="Research for gener with devices", echo = FALSE, message = FALSE, warning=FALSE}
@@ -187,7 +187,7 @@ Graph3<- gener_devices%>%
 Graph3
 ```
 
-As we can see from table3 and figure3,the top on support devices is Games.It support 38 different types of devices and the lowest is Music,which support 35 different types of devices.Each type of app is at least 35 different devices.The gap between the top and lowest is very close.
+As we can see from table3\@ref(tab:q3) and figure3\@ref(fig:q3),the top on support devices is Games.It support 38 different types of devices and the lowest is Music,which support 35 different types of devices.Each type of app is at least 35 different devices.The gap between the top and lowest is very close.
 
 
 
