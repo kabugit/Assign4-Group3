@@ -159,3 +159,24 @@ Although, we know from table \@ref(tab:finance-tab) and \@ref(tab:sports-tab) th
 
 Health And Fitness, Games have the highest average rating among all genres, even though average major developments are only 3 and 4 respectively.
 
+For Finance and Sports, though, if we remove the outliers spiking the average, what would the above plot shape up to be?
+
+```{r}
+plot_genre_filt <- vers %>%
+  select(prime_genre, track_name, user_rating, Main_Ver) %>% 
+  filter(!track_name %in% c("NBA", "Stock Market HD: Real Time Stocks Tracker + Forex", "Stock Market Pro: Stock Trading, Charts & Alerts")) %>% 
+  group_by(prime_genre) %>% 
+  summarise(`Average Developments` = as.integer(mean(Main_Ver, na.rm = TRUE)),
+            `Average Ratings` = as.numeric(mean(user_rating, na.rm = TRUE))) %>%    arrange(desc(`Average Developments`)) %>%
+  rename("Genre" = prime_genre)
+plot_genre_filt$`Average Ratings` <- round(plot_genre_filt$`Average Ratings`, 1)
+
+dev_plot_filt <- plot_genre_filt %>%
+  ggplot(aes(x = `Average Developments`, y = `Average Ratings`, color = Genre)) + 
+  geom_point(alpha = 0.7)
+
+ggplotly(dev_plot_filt)
+```
+
+By removing only 2 outlier apps (Stock Martket Pro, Stock Markter HD) from Finance and one (NBA) from Sport, the graph becomes much more appropriately scaled. Finance average developments drop from 100 to 4, whereas Sports drops from 34 to 4.
+
