@@ -12,9 +12,9 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 
 # Ketan Kabu:
 
-# Correlation of version development and rating
+## Correlation of version development and rating
 
-## What is version code?
+### What is version code?
 
 Version code is a positive integer used as an internal version number. This number is used only to determine whether one version is more recent than another, with higher numbers indicating more recent versions. The value is a positive integer so that other apps can programmatically evaluate it, for example to check an upgrade or downgrade relationship.@mcmurtry_zampano_2020
 
@@ -22,6 +22,7 @@ Version code is a positive integer used as an internal version number. This numb
 library(tidyverse)
 library(dplyr)
 library(kableExtra)
+library(plotly)
 ```
 
 
@@ -38,7 +39,7 @@ vers <- data %>%
   mutate(Main_Ver = as.integer(sub("\\..*", "", ver))) # Removed apps that have total ratings posted less than 100, as this indicates a considerable lack of usage
 
 ```
-## Average number of app developments of top 30 apps
+### Average number of app developments of top 30 apps
 
 Top 30 apps are chosen on the basis of usage, which in this case is assumed to be total rating counts.
 
@@ -87,7 +88,7 @@ Table \@ref(tab:genre-tab)
 
 As we can see, Finance and Sports apps seem to have a massive number of developments with 100 and 34 average major developments respectively. Is it that all Finance and Sports apps have such massive number of developments or are there outliers spiking the average?
 
-## Finance apps with most number of developments
+### Finance apps with most number of developments
 ```{r finance-tab}
 finance_dev <- vers %>%
   filter(prime_genre == "Finance") %>% 
@@ -107,7 +108,7 @@ Table \@ref(tab:finance-tab)
 
 Stock Market HD and Stock Market Pro clearly show a much higher number of major developments, 2023 each. The 3rd highest developed app, Citi Mobile, has had only 8 major developments. 
 
-## Sports apps with most number of developments
+### Sports apps with most number of developments
 ```{r sports-tab}
 sports_dev <- vers %>%
   filter(prime_genre == "Sports") %>% 
@@ -126,3 +127,33 @@ knitr::kable(sports_dev, caption = "Sports app developments") %>%
 Table \@ref(tab:sports-tab)
 
 Like finance apps in table \@ref(tab:finance-tab), the app NBA spikes the average developments of the sports genre with 2013 major developments, whereas, the second highest app NFL only has 14 major developments.
+
+### Relationship between major developments and rating
+
+```{r}
+# Tidying data before plotting
+plot_genre_data <- vers %>%
+  select(prime_genre, user_rating, Main_Ver) %>% 
+  group_by(prime_genre) %>% 
+  summarise(`Average Developments` = as.integer(mean(Main_Ver, na.rm = TRUE)),
+            `Average Ratings` = as.numeric(mean(user_rating, na.rm = TRUE))) %>%    arrange(desc(`Average Developments`)) %>%
+  rename("Genre" = prime_genre)
+
+plot_genre_data$`Average Ratings` <- round(plot_genre_data$`Average Ratings`, 1)
+```
+Please hover pointer over the scatter plot points to view the Genre
+```{r}
+# Plotting
+dev_plot <- plot_genre_data %>%
+  ggplot(aes(x = `Average Developments`, y = `Average Ratings`, color = Genre)) + 
+  geom_point(alpha = 0.7)
+
+ggplotly(dev_plot)
+```
+
+The plot above indicates that finance apps (on the far right) have had way more major developments than any other genre of apps, but not a relatively high rating.
+Most of the app genres lie in the range of 1-12 developments, while also hovering around the 4 star rating, which is quite decent.
+But finance and sports, with their huge number of major developments, lie below 4 rating, with sport at 3.6 and finance at 3.8 respectively.
+
+Although, we know from table \@ref(tab:finance-tab) and \@ref(tab:sports-tab) that not all apps in these genres have had that many developments, with only a few spiking the average.
+
