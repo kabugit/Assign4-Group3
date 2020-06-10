@@ -1,0 +1,714 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Assignment4-Group3},
+  pdfauthor={Group3: Yezi He, Diyao Chen, Ketan Kabu, Sen Wang},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{longtable,booktabs}
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+
+\title{Assignment4-Group3}
+\author{Group3: Yezi He, Diyao Chen, Ketan Kabu, Sen Wang}
+\date{08/06/2020}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+The ever-changing mobile landscape is a challenging space to navigate. The percentage of mobile over desktop is only increasing. Android holds about 53.2\% of the smartphone market, while iOS is 43\%. To get more people to download your app, you need to make sure they can easily find your app. Mobile app analytics is a great way to understand the existing strategy to drive growth and retention of future user (Ramanathan (\protect\hyperlink{ref-dataset}{2017})).
+
+For a new entity entering this dynamic market, it could be overwhelming to consider which space or genre to target. With help of our dataset, which captures a comprehensive set of information about the 7000 apps on the iOS app store, we have generated useful insights about this landscape. Our research questions will provide an analytical overview on usage, user ratings and various other parameters on apps and genre of apps.
+
+\hypertarget{section-1}{%
+\section{Section 1}\label{section-1}}
+
+\hypertarget{most-number-of-rating-counts-for-which-genre}{%
+\subsection{Most number of rating counts for which genre}\label{most-number-of-rating-counts-for-which-genre}}
+
+\begin{figure}
+
+{\centering \includegraphics{Assignment4-Group3_files/figure-latex/numcount-1} 
+
+}
+
+\caption{Most number of rating counts for which genre}\label{fig:numcount}
+\end{figure}
+
+Figure \ref{fig:numcount} shows that games are the genre with the highest number of rating, far higher than other genres.
+Behind the games are social networking and photo \& video. Apps for entertainment receive the most ratings.
+
+\begin{table}[!h]
+
+\caption{\label{tab:ranknumcount}The rank of rating counts for Games}
+\centering
+\begin{tabular}[t]{l|r}
+\hline
+Apps & Total rating count\\
+\hline
+\rowcolor{gray!6}  \rowcolor{steelblue}  \textcolor{white}{\textbf{Clash of Clans}} & \textcolor{white}{\textbf{2130805}}\\
+\hline
+\rowcolor{steelblue}  \textcolor{white}{\textbf{Temple Run}} & \textcolor{white}{\textbf{1724546}}\\
+\hline
+\rowcolor{gray!6}  \rowcolor{steelblue}  \textcolor{white}{\textbf{Candy Crush Saga}} & \textcolor{white}{\textbf{961794}}\\
+\hline
+Angry Birds & 824451\\
+\hline
+\rowcolor{gray!6}  Subway Surfers & 706110\\
+\hline
+Fruit Ninja Classic & 698516\\
+\hline
+\rowcolor{gray!6}  Solitaire & 679055\\
+\hline
+CSR Racing & 677247\\
+\hline
+\rowcolor{gray!6}  Crossy Road - Endless Arcade Hopper & 669079\\
+\hline
+Injustice: Gods Among Us & 612532\\
+\hline
+\end{tabular}
+\end{table}
+
+It can be seen from Table \ref{tab:ranknumcount} that the top three apps with the most rating counts are Clash of Clans, Temple Run and Candy Crush Saga, which were all the rage. Among them, the number of Clash of Clans and Temple Run rating counts exceeds one million.
+
+\hypertarget{risedrop-in-rating-since-last-update}{%
+\subsection{Rise/drop in rating since last update?}\label{risedrop-in-rating-since-last-update}}
+
+\begin{figure}
+
+{\centering \includegraphics{Assignment4-Group3_files/figure-latex/ratingdifference-1} 
+
+}
+
+\caption{Rise/drop in rating since last update}\label{fig:ratingdifference}
+\end{figure}
+
+\begin{table}[!h]
+
+\caption{\label{tab:rankratingdifference}The rank of rise/drop in rating since last update}
+\centering
+\begin{tabular}[t]{l|r}
+\hline
+genre & difference\\
+\hline
+\rowcolor{gray!6}  \rowcolor{steelblue}  \textcolor{white}{\textbf{Shopping}} & \textcolor{white}{\textbf{-0.9221311}}\\
+\hline
+\rowcolor{steelblue}  \textcolor{white}{\textbf{Finance}} & \textcolor{white}{\textbf{-0.7980769}}\\
+\hline
+\rowcolor{gray!6}  \rowcolor{steelblue}  \textcolor{white}{\textbf{Food \& Drink}} & \textcolor{white}{\textbf{-0.7698413}}\\
+\hline
+News & -0.7666667\\
+\hline
+\rowcolor{gray!6}  Lifestyle & -0.5868056\\
+\hline
+Travel & -0.5555556\\
+\hline
+\rowcolor{gray!6}  Navigation & -0.5326087\\
+\hline
+\end{tabular}
+\end{table}
+
+After the update, most apps ratings have changed. Unexpectedly, all apps ratings have dropped. It can be seen from Figure \ref{fig:ratingdifference} and Table \ref{tab:rankratingdifference} that shopping apps have the fastest drop in ratings after last update. Finance, food \& drink and news are followed in the ranking, whose differences are around -0.7. And only the rating of the shopping apps fell below -0.8. Games has a lot of ratings, but after updating, the ratings haven't changed much.
+
+\hypertarget{section-2}{%
+\section{Section 2}\label{section-2}}
+
+Nowadays, more and more different type of App on the market. Some is for work, some is for entertainment,we know to know the feekback from the consumers.
+In this section, we will analysis the realtionship between different type of app with user rating, language and support different devices.
+
+\hypertarget{which-genre-are-highest-rated}{%
+\subsection{Which genre are highest rated?}\label{which-genre-are-highest-rated}}
+
+\begin{table}[!h]
+
+\caption{\label{tab:q1}Table1. Ranking of rating with different genre}
+\centering
+\begin{tabular}[t]{l|r}
+\hline
+prime\_genre & average\_rating\\
+\hline
+\rowcolor{gray!6}  Productivity & 4.005618\\
+\hline
+Music & 3.978261\\
+\hline
+\rowcolor{gray!6}  Photo \& Video & 3.800860\\
+\hline
+Business & 3.745614\\
+\hline
+\rowcolor{gray!6}  Health \& Fitness & 3.700000\\
+\hline
+Games & 3.685008\\
+\hline
+\rowcolor{gray!6}  Weather & 3.597222\\
+\hline
+Shopping & 3.540984\\
+\hline
+\rowcolor{gray!6}  Reference & 3.453125\\
+\hline
+Travel & 3.376543\\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{figure}
+
+{\centering \includegraphics{Assignment4-Group3_files/figure-latex/q1-1} 
+
+}
+
+\caption{Research for gener with rating }\label{fig:q1}
+\end{figure}
+
+As we can see from the table1\ref{tab:q1} and the figure1\ref{fig:q1}, there are 23 different types of App in the research. The highest rating is type of productivity, which is 4 mark.On the other hand, the lowest rating is catalogs, which is 2.1 mark. overall, the different type of App's ratings are fairly close. The gap of highest and lowest is 1.9.and the top and the second within a tenth of a point.
+
+\hypertarget{which-genre-support-most-language}{%
+\subsection{Which genre support most language?}\label{which-genre-support-most-language}}
+
+\begin{table}[!h]
+
+\caption{\label{tab:q2}Table2. Ranking of language with different genre}
+\centering
+\begin{tabular}[t]{l|r}
+\hline
+prime\_genre & average\_language\\
+\hline
+\rowcolor{gray!6}  Productivity & 11.050562\\
+\hline
+Business & 10.684211\\
+\hline
+\rowcolor{gray!6}  Photo \& Video & 9.664756\\
+\hline
+Social Networking & 9.125749\\
+\hline
+\rowcolor{gray!6}  Travel & 7.592593\\
+\hline
+Weather & 7.319444\\
+\hline
+\rowcolor{gray!6}  Education & 7.205298\\
+\hline
+Music & 7.137681\\
+\hline
+\rowcolor{gray!6}  Health \& Fitness & 6.661111\\
+\hline
+Utilities & 6.520161\\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{figure}
+
+{\centering \includegraphics{Assignment4-Group3_files/figure-latex/q2-1} 
+
+}
+
+\caption{Research for gener with language}\label{fig:q2}
+\end{figure}
+
+As we can see from table2\ref{tab:q2} and figure2\ref{fig:q2}, the genre of productivity is support the most language, which is the type of 11 different languages.And the lowest is the Finance app, only support 2 types of language about that. The gap is huge between the top and the lowest, but every type of Apps Will provide at least two different languages.
+
+\hypertarget{which-genre-support-most-devices}{%
+\subsection{Which genre support most devices?}\label{which-genre-support-most-devices}}
+
+\begin{table}[!h]
+
+\caption{\label{tab:q3}Table3.Ranking of support devices with different genre}
+\centering
+\begin{tabular}[t]{l|r}
+\hline
+prime\_genre & average\_devices\\
+\hline
+\rowcolor{gray!6}  Games & 38.01838\\
+\hline
+Book & 37.54464\\
+\hline
+\rowcolor{gray!6}  Catalogs & 37.30000\\
+\hline
+Lifestyle & 37.06944\\
+\hline
+\rowcolor{gray!6}  Travel & 37.01235\\
+\hline
+Sports & 36.92105\\
+\hline
+\rowcolor{gray!6}  Food \& Drink & 36.92063\\
+\hline
+Finance & 36.83654\\
+\hline
+\rowcolor{gray!6}  Photo \& Video & 36.75645\\
+\hline
+Utilities & 36.68548\\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{figure}
+
+{\centering \includegraphics{Assignment4-Group3_files/figure-latex/q3-1} 
+
+}
+
+\caption{Research for gener with devices}\label{fig:q3}
+\end{figure}
+
+As we can see from table3\ref{tab:q3} and figure3\ref{fig:q3},the top on support devices is Games.It support 38 different types of devices and the lowest is Music,which support 35 different types of devices.Each type of app is at least 35 different devices.The gap between the top and lowest is very close.
+
+\hypertarget{section-3}{%
+\section{Section 3}\label{section-3}}
+
+\hypertarget{correlation-of-version-development-and-rating}{%
+\subsection{Correlation of version development and rating}\label{correlation-of-version-development-and-rating}}
+
+\hypertarget{what-is-version-code}{%
+\subsubsection{What is version code?}\label{what-is-version-code}}
+
+Version code is a positive integer used as an internal version number. This number is used only to determine whether one version is more recent than another, with higher numbers indicating more recent versions. The value is a positive integer so that other apps can programmatically evaluate it, for example to check an upgrade or downgrade relationship (Developers (\protect\hyperlink{ref-version_code}{2019})).
+
+\hypertarget{average-number-of-app-developments-of-top-30-apps}{%
+\subsubsection{Average number of app developments of top 30 apps}\label{average-number-of-app-developments-of-top-30-apps}}
+
+Top 30 apps are chosen on the basis of usage, which in this case is assumed to be total rating counts.
+
+\begin{table}[!h]
+
+\caption{\label{tab:app-tab}Top apps and their developments}
+\centering
+\begin{tabular}[t]{l|r}
+\hline
+App & Average Major Developments\\
+\hline
+\rowcolor{gray!6}  Facebook & 95\\
+\hline
+Google – Search made just for mobile & 27\\
+\hline
+\rowcolor{gray!6}  Instagram & 10\\
+\hline
+Clash of Clans & 9\\
+\hline
+\rowcolor{gray!6}  Pandora - Music \& Radio & 8\\
+\hline
+Spotify Music & 8\\
+\hline
+\rowcolor{gray!6}  The Weather Channel: Forecast, Radar \& Alerts & 8\\
+\hline
+Angry Birds & 7\\
+\hline
+\rowcolor{gray!6}  Bible & 7\\
+\hline
+Calorie Counter \& Diet Tracker by MyFitnessPal & 7\\
+\hline
+\rowcolor{gray!6}  Google Earth & 7\\
+\hline
+PAC-MAN & 6\\
+\hline
+\rowcolor{gray!6}  Pinterest & 6\\
+\hline
+Head Soccer & 5\\
+\hline
+\rowcolor{gray!6}  The Sims™ FreePlay & 5\\
+\hline
+CSR Racing & 4\\
+\hline
+\rowcolor{gray!6}  Despicable Me: Minion Rush & 4\\
+\hline
+Solitaire & 4\\
+\hline
+\rowcolor{gray!6}  DragonVale & 3\\
+\hline
+Sonic Dash & 3\\
+\hline
+\rowcolor{gray!6}  Fruit Ninja Classic & 2\\
+\hline
+Injustice: Gods Among Us & 2\\
+\hline
+\rowcolor{gray!6}  Candy Crush Saga & 1\\
+\hline
+Clear Vision (17+) & 1\\
+\hline
+\rowcolor{gray!6}  Crossy Road - Endless Arcade Hopper & 1\\
+\hline
+Hay Day & 1\\
+\hline
+\rowcolor{gray!6}  Minecraft: Pocket Edition & 1\\
+\hline
+Plants vs. Zombies & 1\\
+\hline
+\rowcolor{gray!6}  Subway Surfers & 1\\
+\hline
+Temple Run & 1\\
+\hline
+\end{tabular}
+\end{table}
+
+Table \ref{tab:app-tab}
+
+Facebook is the app that by far has had the most developments out of the top 30 apps, with 95 major developments. This is followed by Google with 27 and Instagram with 10.
+Interestin to note that Temple Run and Subway Surfers, 2 apps that are widely popular and been around since a long time have only had 1 major development.
+
+\hypertarget{average-number-of-app-developments-of-all-genres}{%
+\subsection{Average number of app developments of all genres}\label{average-number-of-app-developments-of-all-genres}}
+
+Let's take a look at the genres with highest number of major developments
+
+\begin{table}[!h]
+
+\caption{\label{tab:genre-tab}Genres and their developments}
+\centering
+\begin{tabular}[t]{l|r}
+\hline
+Genre & Average Developments\\
+\hline
+\rowcolor{gray!6}  Finance & 100\\
+\hline
+Sports & 34\\
+\hline
+\rowcolor{gray!6}  Entertainment & 7\\
+\hline
+Navigation & 6\\
+\hline
+\rowcolor{gray!6}  Social Networking & 6\\
+\hline
+Travel & 6\\
+\hline
+\rowcolor{gray!6}  News & 5\\
+\hline
+Games & 4\\
+\hline
+\rowcolor{gray!6}  Medical & 4\\
+\hline
+Photo \& Video & 4\\
+\hline
+\rowcolor{gray!6}  Productivity & 4\\
+\hline
+Shopping & 4\\
+\hline
+\rowcolor{gray!6}  Book & 3\\
+\hline
+Business & 3\\
+\hline
+\rowcolor{gray!6}  Food \& Drink & 3\\
+\hline
+Health \& Fitness & 3\\
+\hline
+\rowcolor{gray!6}  Lifestyle & 3\\
+\hline
+Music & 3\\
+\hline
+\rowcolor{gray!6}  Reference & 3\\
+\hline
+Utilities & 3\\
+\hline
+\rowcolor{gray!6}  Weather & 3\\
+\hline
+Education & 2\\
+\hline
+\rowcolor{gray!6}  Catalogs & 1\\
+\hline
+\end{tabular}
+\end{table}
+
+Table \ref{tab:genre-tab}
+
+As we can see, Finance and Sports apps seem to have a massive number of developments with 100 and 34 average major developments respectively. Is it that all Finance and Sports apps have such massive number of developments or are there outliers spiking the average?
+
+\hypertarget{finance-apps-with-most-number-of-developments}{%
+\subsubsection{Finance apps with most number of developments}\label{finance-apps-with-most-number-of-developments}}
+
+\begin{table}[!h]
+
+\caption{\label{tab:finance-tab}Finance app developments}
+\centering
+\begin{tabular}[t]{l|r}
+\hline
+Apps & Average Developments\\
+\hline
+\rowcolor{gray!6}  Stock Market HD: Real Time Stocks Tracker + Forex & 2023\\
+\hline
+Stock Market Pro: Stock Trading, Charts \& Alerts & 2023\\
+\hline
+\rowcolor{gray!6}  Citi Mobile® & 8\\
+\hline
+Bank of America - Mobile Banking & 7\\
+\hline
+\rowcolor{gray!6}  Bank of America - Mobile Banking for iPad & 7\\
+\hline
+TaxCaster – Free tax refund calculator & 7\\
+\hline
+\rowcolor{gray!6}  USAA Mobile & 7\\
+\hline
+Venmo & 7\\
+\hline
+\rowcolor{gray!6}  PayPal - Send and request money safely & 6\\
+\hline
+Amex Mobile & 5\\
+\hline
+\rowcolor{gray!6}  Capital One Mobile & 5\\
+\hline
+IRS2Go & 5\\
+\hline
+\rowcolor{gray!6}  Mint: Personal Finance, Budget, Bills \& Money & 5\\
+\hline
+Pennies – Budget and Expense Tracker & 5\\
+\hline
+\rowcolor{gray!6}  VyStar Mobile Banking for iPhone & 5\\
+\hline
+<U+968F><U+624B><U+8BB0><U+4E13><U+4E1A><U+7248> for  iPad & 4\\
+\hline
+\rowcolor{gray!6}  KeyBank Mobile & 4\\
+\hline
+BillMinder - Bill Reminder and Organizer & 3\\
+\hline
+\rowcolor{gray!6}  Chase Mobile & 3\\
+\hline
+HomeBudget with Sync & 3\\
+\hline
+\end{tabular}
+\end{table}
+
+Table \ref{tab:finance-tab}
+
+Stock Market HD and Stock Market Pro clearly show a much higher number of major developments, 2023 each. The 3rd highest developed app, Citi Mobile, has had only 8 major developments.
+
+\hypertarget{sports-apps-with-most-number-of-developments}{%
+\subsubsection{Sports apps with most number of developments}\label{sports-apps-with-most-number-of-developments}}
+
+\begin{table}[!h]
+
+\caption{\label{tab:sports-tab}Sports app developments}
+\centering
+\begin{tabular}[t]{l|r}
+\hline
+Apps & Average Developments\\
+\hline
+\rowcolor{gray!6}  NBA & 2013\\
+\hline
+NFL & 14\\
+\hline
+\rowcolor{gray!6}  CBS Sports App - Sports Scores, News, Stats, Watch & 10\\
+\hline
+MLB.com At Bat & 10\\
+\hline
+\rowcolor{gray!6}  Onefootball - Soccer Scores \& Live News & 10\\
+\hline
+Fantasy Football Manager - FFM for FPL & 9\\
+\hline
+\rowcolor{gray!6}  The Masters Tournament & 9\\
+\hline
+Yahoo Fantasy Sports & 9\\
+\hline
+\rowcolor{gray!6}  2016 U.S. Open Golf Championship & 8\\
+\hline
+2016 US Open Tennis Championships & 8\\
+\hline
+\rowcolor{gray!6}  NHL & 8\\
+\hline
+PGA Championship 2016 – Baltusrol Golf Club & 8\\
+\hline
+\rowcolor{gray!6}  The Championships, Wimbledon 2016 - Tennis Grand Slam & 8\\
+\hline
+NCAA March Madness Live - Men's College Basketball & 7\\
+\hline
+\rowcolor{gray!6}  BTN2Go & 6\\
+\hline
+Coach's Eye - Video Analysis & 6\\
+\hline
+\rowcolor{gray!6}  KICK: Official Football Card Trader & 6\\
+\hline
+NASCAR MOBILE & 6\\
+\hline
+\rowcolor{gray!6}  NFL HUDDLE: Football Card Trader & 6\\
+\hline
+SofaScore Live Sports: Scores, VIDEO \& Stats & 6\\
+\hline
+\end{tabular}
+\end{table}
+
+Table \ref{tab:sports-tab}
+
+Like finance apps in table \ref{tab:finance-tab}, the app NBA spikes the average developments of the sports genre with 2013 major developments, whereas, the second highest app NFL only has 14 major developments.
+
+\hypertarget{relationship-between-major-developments-and-rating}{%
+\subsubsection{Relationship between major developments and rating}\label{relationship-between-major-developments-and-rating}}
+
+Please hover pointer over the scatter plot points to view the Genre
+
+\begin{figure}
+
+{\centering \includegraphics{Assignment4-Group3_files/figure-latex/devplot-1} 
+
+}
+
+\caption{Development-Rating correlation}\label{fig:devplot}
+\end{figure}
+
+Figure \ref{fig:devplot}
+
+The plot above indicates that finance apps (on the far right) have had way more major developments than any other genre of apps, but not a relatively high rating.
+Most of the app genres lie in the range of 1-12 developments, while also hovering around the 4 star rating, which is quite decent.
+But finance and sports, with their huge number of major developments, lie below 4 rating, with sport at 3.6 and finance at 3.8 respectively.
+
+Although, we know from table \ref{tab:finance-tab} and \ref{tab:sports-tab} that not all apps in these genres have had that many developments, with only a few spiking the average.
+
+Health And Fitness, Games have the highest average rating among all genres, even though average major developments are only 3 and 4 respectively.
+
+For Finance and Sports, though, if we remove the outliers spiking the average, what would the above plot shape up to be?
+
+\begin{figure}
+
+{\centering \includegraphics{Assignment4-Group3_files/figure-latex/devplot-filt-1} 
+
+}
+
+\caption{Development-Rating correlation (updated)}\label{fig:devplot-filt}
+\end{figure}
+
+Figure \ref{fig:devplot-filt}
+
+By removing only 2 outlier apps (Stock Martket Pro, Stock Markter HD) from Finance and one (NBA) from Sport, the graph becomes much more appropriately scaled. Finance average developments drop from 100 to 4, whereas Sports drops from 34 to 4.
+So, in figure \ref{fig:devplot-filt} we see that Entertainment becomes the most developed genre at average 7 major developments, and even in this case, with an average rating of 3.8, the genre is not nearly one of the best rated. Clearly, app developments isn't corresponding to actually high ratings.
+
+\hypertarget{section-4}{%
+\section{Section 4}\label{section-4}}
+
+\hypertarget{genre-rating-price-correlation}{%
+\subsection{Genre-rating-price correlation?}\label{genre-rating-price-correlation}}
+
+\begin{figure}
+
+{\centering \includegraphics{Assignment4-Group3_files/figure-latex/dataplot1-1} 
+
+}
+
+\caption{No strong relation between app categories and user ratings in different price}\label{fig:dataplot1}
+\end{figure}
+
+According to the Figure \ref{fig:dataplot1}, there is no strong relationship between app categories and user ratings in different price. Each type of App has similar user ratings at different prices. However, we can find that the price of shopping and financial apps is lower than that of other apps, which may be because they hope to gain more users through low threshold, and medical apps are the most expensive, which may be because they provide valuable information about users' health.
+
+\hypertarget{genre-rating-size-correlation}{%
+\subsection{Genre-rating-size correlation?}\label{genre-rating-size-correlation}}
+
+\begin{figure}
+
+{\centering \includegraphics{Assignment4-Group3_files/figure-latex/dataplot2-1} 
+
+}
+
+\caption{The relation between app size and user rating in different genres}\label{fig:dataplot2}
+\end{figure}
+
+According to the Figure \ref{fig:dataplot2}, for most kinds of apps, with the increase of application size, the average user evaluation increases with the increase of praise. Developers can gain higher user ratings by increasing the size of their apps.
+
+\hypertarget{conclusion}{%
+\section{Conclusion}\label{conclusion}}
+
+We have looked into various aspects of the mobile app landscape. We can safely draw the following conclusions:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Ratings - Productivity has the highest average rating as compared to any other genre at just over 4, making it the only genre with an above 4 average rating. It is followed by Social Networking (3.9) and Photo \& Video (3.8). Catalogs are rated the lowest (2.1).
+\item
+  Usage (rating count) - Games, Social Networking and Photo \& Video apps are the highest used app genres. Clash of Clans, Temple Run and Candy Crush are the highest rated apps, making it clear why Games is the most used app genre.
+\item
+  Most languages - Productivity, Business and Photo \& Video are the apps with most supported languages on their platform, with Productivity supporting 11 languages. Finance apps are the lowest in this category with 2 supported languages only.
+\item
+  Most devices - App genre supported on most devices is Games, supoorted on 38 devices. Books and Catalogs follow, although all genres operate at 35 apps or more.
+\item
+  Most developed - Finance and Sport are way ahead of all genres in terms of most major developments occured. Facebook, Google and Instagram are the apps with the most developments till date among the highest used apps.
+\item
+  Latest version update - Ratings for nearly all genres have fallen after the latest version update, with Shopping, Finance and Food \& Drink getting hit the hardest. Games have maintained a stable rating.
+\item
+  Price-rating correlation - There seems to be no evidence of ratings changing with an increase or decrease in the average price of all genres. Although, Finance and Shopping apps are the lowest priced, whereas Medical apps are the highest priced.
+\end{enumerate}
+
+\hypertarget{references}{%
+\section*{References}\label{references}}
+\addcontentsline{toc}{section}{References}
+
+\hypertarget{refs}{}
+\leavevmode\hypertarget{ref-version_code}{}%
+Developers, Android. 2019. ``Version Your App.'' \url{https://developer.android.com/studio/publish/versioning}.
+
+\leavevmode\hypertarget{ref-dataset}{}%
+Ramanathan. 2017. ``Mobile App Store (7200 Apps).'' \url{https://www.kaggle.com/ramamet4/app-store-apple-data-set-10k-apps}.
+
+\end{document}
