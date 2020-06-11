@@ -365,6 +365,7 @@ Figure \@ref(fig:devplot-filt)
 By removing only 2 outlier apps (Stock Martket Pro, Stock Markter HD) from Finance and one (NBA) from Sport, the graph becomes much more appropriately scaled. Finance average developments drop from 100 to 4, whereas Sports drops from 34 to 4.
 So, in figure \@ref(fig:devplot-filt) we see that Entertainment becomes the most developed genre at average 7 major developments, and even in this case, with an average rating of 3.8, the genre is not nearly one of the best rated. Clearly, app developments isn't corresponding to actually high ratings.
 
+
 # Section 4
 
 
